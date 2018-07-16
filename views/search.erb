@@ -1,26 +1,29 @@
-
-  <div class="jumbotron">
-    <h1>Search results for: "<%= @query %>"</h1>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Search results for: "<%= @query %>"</h1>
+    <p class="lead text-muted">Just some text so this looks nicer</p>
   </div>
+</section>
 
-
-<div class="row">
-<% @recipes.each_with_index do |recipe, i| %>
-<div class="col-md-4">
-  <div class="card mb-4 box-shadow">
-    <div class="card-body">
-      <h2 class="card-heading"><%= recipe.name %></h2>
-      <small class="text-muted">Preparation time: <%= recipe.prep_time %> | Difficulty: <%= recipe.diff %></small>
-      <p class="card-text"><%= recipe.description %></p>
-      <form method="POST" action="/add/<%= i %>">
-      <input name="name" value="<%= recipe.name %>" hidden>
-      <input name="description" value="<%= recipe.description %>" hidden>
-      <input name="prep_time" value="<%= recipe.prep_time %>" hidden>
-      <input name="diff" value="<%= recipe.diff %>" hidden>
-        <button type="submit" class="btn btn-sm btn-outline-success">Add to cookbook</button>
-      </form>
-    </div><!--./card-bodyx -->
-  </div><!--./card mb-4 -->
-</div><!--./col-md-4 -->
-<% end %>
-</div>
+<div class="container">
+  <div class="row">
+    <% @recipes.each_with_index do |recipe, i| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h2 class="card-heading"><%= recipe.name %></h2>
+            <small class="text-muted">Preparation time: <%= recipe.prep_time %> | Difficulty: <%= recipe.diff %></small>
+            <p class="card-text"><%= recipe.description %></p>
+            <form method="POST" action="/add/<%= i %>">
+              <input name="name" value="<%= recipe.name %>" hidden>
+              <input name="description" value="<%= recipe.description %>" hidden>
+              <input name="prep_time" value="<%= recipe.prep_time %>" hidden>
+              <input name="diff" value="<%= recipe.diff %>" hidden>
+              <button type="submit" class="btn btn-sm btn-outline-success">Add to cookbook</button>
+            </form>
+          </div><!--./card-bodyx -->
+        </div><!--./card mb-4 -->
+      </div><!--./col-md-4 -->
+    <% end %>
+  </div><!--./row -->
+</div><!--./container -->

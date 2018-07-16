@@ -3,6 +3,8 @@ require 'sinatra/reloader' if development?
 require 'pry-byebug'
 require 'better_errors'
 
+# set :bind, '0.0.0.0'
+
 require_relative './recipe'
 require_relative './cookbook'
 require_relative './scraper'
@@ -24,7 +26,7 @@ get '/new' do
   erb :new
 end
 
-# FIXME: this should be delete
+# FIXME: this should be "delete"
 post '/destroy/:index' do
   COOKBOOK.remove_recipe(params[:index].to_i)
   redirect '/'
@@ -59,13 +61,3 @@ post '/add/:index' do
   COOKBOOK.add_recipe(new_recipe)
   redirect '/'
 end
-
-# post '/search/:query' do
-#   SCRAPER.fetch_recipes(params[:query])
-#   redirect '/search/:query'
-# end
-
-# get '/team/:username' do
-#   puts params[:username]
-#   "The username is #{params[:username]}"
-# end

@@ -1,40 +1,42 @@
-<div class="row">
-  <div class="col-md-8 offset-md-2">
-    <h1>Add new recipe</h1>
-    <form method="POST" action="/recipes">
-      <div class="form-group">
-          <label for="recipeName">Name</label>
-          <input name="name" required type="text" class="form-control" id="recipeName" placeholder="Name">
-      </div>
-      <div class="form-group">
-        <label for="recipeDesc">Description</label>
-        <textarea name="desc" required class="form-control" id="recipeDesc" rows="3"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputState">Difficulty</label>
-          <select required name="diff" id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option value="Very Easy">Very Easy</option>
-            <option value="Easy">Easy</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Difficult">Difficult</option>
-          </select>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>Add new recipe</h1>
+      <form method="POST" action="/recipes">
+        <div class="form-group">
+            <label for="recipeName">Name</label>
+            <input name="name" required type="text" class="form-control" id="recipeName" placeholder="Name">
         </div>
-        <div class="form-group col-md-6">
-          <label for="recipePrepTime">Preparation time (mins)</label>
-          <input name="prep_time" required type="number" class="form-control" id="recipePrepTime">
+        <div class="form-group">
+          <label for="recipeDesc">Description</label>
+          <textarea name="desc" required class="form-control" id="recipeDesc" rows="3"></textarea>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input name="is_done" class="form-check-input" type="checkbox" id="markCheck">
-          <label class="form-check-label" for="markCheck">
-            Mark as done
-          </label>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputState">Difficulty</label>
+            <select required name="diff" id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option value="Very Easy">Very Easy</option>
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Difficult">Difficult</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="recipePrepTime">Preparation time (mins)</label>
+            <input name="prep_time" required type="number" class="form-control" id="recipePrepTime">
+          </div>
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Add Recipe</button>
-    </form>
+        <div class="form-group">
+          <div class="form-check">
+            <input name="is_done" class="form-check-input" type="checkbox" id="markCheck">
+            <label class="form-check-label" for="markCheck">
+              Mark as done
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Recipe</button>
+      </form>
+    </div>
   </div>
 </div>

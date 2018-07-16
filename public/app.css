@@ -1,7 +1,59 @@
-body {
-  padding-top: 4.5rem;
+:root {
+  --jumbotron-padding-y: 3rem;
 }
 
-.card {
-  /* height: 100%; */
+/* Sticky footer */
+.site {
+  padding-top: 3.625rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
+.site__content {
+  flex: 1;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+/* Jumbotron custom styling */
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-top: -3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+/* Adding box shadow to the cards */
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/* FIXME: Cards should span to the same height as their sibilings! */
+/* .card {
+  height: 100%;
+} */
