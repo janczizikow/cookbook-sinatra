@@ -5,6 +5,7 @@ require 'better_errors'
 
 require_relative './recipe'
 require_relative './cookbook'
+require_relative './scraper'
 
 configure :development do
   use BetterErrors::Middleware
@@ -12,6 +13,7 @@ configure :development do
 end
 
 COOKBOOK = Cookbook.new(File.join(__dir__, 'recipes.csv'))
+SCRAPER = Scraper.new
 
 get '/' do
   @recipes = COOKBOOK.all
@@ -22,15 +24,13 @@ get '/new' do
   erb :new
 end
 
-get '/destroy/:index' do
-  # params.to_s
-  # puts params[:index]
+# FIXME: this should be delete
+post '/destroy/:index' do
   COOKBOOK.remove_recipe(params[:index].to_i)
   redirect '/'
 end
 
 post '/recipes' do
-  # params.to_s
   new_recipe = Recipe.new(
     params[:name],
     params[:desc],
@@ -42,7 +42,30 @@ post '/recipes' do
   redirect '/'
 end
 
-get '/team/:username' do
-  puts params[:username]
-  "The username is #{params[:username]}"
+get '/search' do
+  @query = params[:query]
+  @recipes = SCRAPER.fetch_recipes(params[:query])
+  erb :search
 end
+
+post '/add/:index' do
+  new_recipe = Recipe.new(
+    params[:name],
+    params[:description],
+    params[:prep_time],
+    params[:diff],
+    params[:is_done]
+  )
+  COOKBOOK.add_recipe(new_recipe)
+  redirect '/'
+end
+
+# post '/search/:query' do
+#   SCRAPER.fetch_recipes(params[:query])
+#   redirect '/search/:query'
+# end
+
+# get '/team/:username' do
+#   puts params[:username]
+#   "The username is #{params[:username]}"
+# end
